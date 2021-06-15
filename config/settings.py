@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "-@^0(y8%0ei0@%gs268^txd7$nmu=c#_w(4aylnw0g(4eb1-0-"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -133,3 +133,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"uploads")
 
 MEDIA_URL = "/media/"
 #경로 시작에 / 를 사용할시 절대경로로 만들어줌
+
+#Email Configuration
+
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
+EMAIL_FROM = "jhkim@sandbox1b78ea1f6fcc463eb5d0fb4829e84d17.mailgun.org"
+
+
