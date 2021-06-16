@@ -60,6 +60,3 @@ class User(AbstractUser):
                       fail_silently = False,
                       )
         return
-
-    def __str__(self):
-        return self.username

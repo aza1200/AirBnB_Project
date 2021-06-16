@@ -135,11 +135,16 @@ MEDIA_URL = "/media/"
 #경로 시작에 / 를 사용할시 절대경로로 만들어줌
 
 #Email Configuration
-
 EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = "587"
 EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
 EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
-EMAIL_FROM = "jhkim@sandbox1b78ea1f6fcc463eb5d0fb4829e84d17.mailgun.org"
+print(EMAIL_HOST_USER,EMAIL_HOST_PASSWORD)
+EMAIL_FROM = "sexy-guy@sandboxebe2f1bfe1e749aaa9c8bb88141e642b.mailgun.org"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+#send_mail('test','test','jhkim@consalad.net',['jhkim@conslad.net'], fail_silently=False,)
 
+# from django.core.mail import send_mail
+#
+# send_mail('subject', 'body of the message', "sexy-guy@sandboxebe2f1bfe1e749aaa9c8bb88141e642b.mailgun.org", ['jhkim@consalad.net'])

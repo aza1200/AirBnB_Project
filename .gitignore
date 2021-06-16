@@ -1,9 +1,15 @@
 migrations
+
 .idea
+
 management
+
 db.sqlite3
+
 Pipfile
+
 Pipfile.lock
+
 __pycache__
 .pyc
 .vscode
