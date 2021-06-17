@@ -35,6 +35,8 @@ class CustomUserAdmin(UserAdmin):
         "superhost",
         "is_staff",
         "is_superuser",
+        "email_verified",
+        "email_secret",
     )
 #admin.site.register(models.User,CustomUserAdmin) 이랑 같은 효과 decorator
 
