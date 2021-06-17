@@ -17,7 +17,17 @@ class CustomUserAdmin(UserAdmin):
     inlines = (RoomInline,)
 
     fieldsets = UserAdmin.fieldsets + (
-        ("Custom Profile", {"fields": ("avatar", "gender", "bio","birthdate","language","currency","superhost",)}),
+        ("Custom Profile",
+            {"fields": (
+                "avatar",
+                "gender",
+                "bio",
+                "birthdate",
+                "language",
+                "currency",
+                "superhost",
+                "login_method",
+            )}),
     )
 
     list_filter = UserAdmin.list_filter+ (
@@ -37,6 +47,7 @@ class CustomUserAdmin(UserAdmin):
         "is_superuser",
         "email_verified",
         "email_secret",
+        "login_method"
     )
 #admin.site.register(models.User,CustomUserAdmin) 이랑 같은 효과 decorator
 
