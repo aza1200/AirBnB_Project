@@ -6,6 +6,7 @@ from django.shortcuts import redirect,reverse
 from django.contrib.auth import authenticate,login,logout
 from django.core.files.base import ContentFile
 
+
 from . import forms,models
 
 class LoginView(FormView):

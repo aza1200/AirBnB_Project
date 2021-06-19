@@ -16,3 +16,5 @@ __pycache__
 photos_seed
 
 .env
+
+node_modules/
