@@ -126,6 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+#directory 가 아닌 서버 url
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
+#누군가 static 으로 갈시 ㅇㄷ 로 접근할시 알려줌
 
 AUTH_USER_MODEL = "users.User"
 
