@@ -15,7 +15,7 @@ const css = () => {
     .pipe(minify()) //코드를 짦게 만듬
     .pipe(gulp.dest("static/css")); //결과를 static css 로 보냄냄
        //브라우저에 보내는건 static/css/styles.css
-
+};
 exports.default = css;
 
 //암튼 sas 를 css 로 바꿔서

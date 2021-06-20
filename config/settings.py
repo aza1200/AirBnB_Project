@@ -128,6 +128,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 #directory 가 아닌 서버 url
 
+#STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
 #누군가 static 으로 갈시 ㅇㄷ 로 접근할시 알려줌
 
