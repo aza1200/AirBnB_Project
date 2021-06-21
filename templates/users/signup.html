@@ -14,12 +14,18 @@
 
         <form method="POST" action="{% url 'users:signup' %}">
             {% csrf_token %}
-            {{form.fist_name}}
+            {{form.first_name}}
             {{form.last_name}}
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Confirm Password">
+            {{form.email}}
+            {{form.password}}
+            {{form.password1}}
             <button class="btn bg-red-500 text-white">Sign Up</button>
         </form>
+
+        <div class="mt-5">
+            <span class="mr-2">Have an account?</span>
+            <a href="{% url 'users:login' %}" class="text-green-400 font-medium">Log in</a>
+        </div>
+
     </div>
 {% endblock content %}
