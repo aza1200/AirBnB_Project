@@ -1,4 +1,4 @@
-const gulp = require("gulp")
+const gulp = require("gulp");
 
 const css = () => {
     const postCSS = require("gulp-postcss");
@@ -18,6 +18,6 @@ const css = () => {
 };
 exports.default = css;
 
-//암튼 sas 를 css 로 바꿔서
+//암튼 sass 를 css 로 바꿔서
 //수정은 반드시 scss 에서 수정
 //scss 변경할시 npm run css 해야함!
