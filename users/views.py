@@ -1,5 +1,6 @@
 import os
 import requests
+from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView,DetailView,UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect,reverse
@@ -211,9 +212,9 @@ class UpdateUserView(UpdateView):
     model = models.User
     template_name="users/update_profile.html"
     fields= (
+        "email",
         "first_name",
         "last_name",
-        "avatar",
         "gender",
         "bio",
         "birthdate",
@@ -224,6 +225,17 @@ class UpdateUserView(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+class UpdatePasswordView(PasswordChangeView):
+
+    template_name = "users/update_password.html"
+
+    # def form_valid(self,form):
+    #
+    #     email = form.cleaned_data.get("email")
+    #     self.object.username = email
+    #     self.object.save()
+    #
+    #     return super().form_valid(form)
 
 #<QueryDict: {'code': ['c0623b0633a0e66e5bc9']}>
 
