@@ -208,6 +208,8 @@ class UserProfileView(DetailView):
 
 
 
+
+
 #<QueryDict: {'code': ['c0623b0633a0e66e5bc9']}>
 
 # 1. github redirect
