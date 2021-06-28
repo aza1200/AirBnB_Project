@@ -164,6 +164,7 @@ def kakao_callback(request):
                                      f"client_id={client_id}&"
                                      f"redirect_uri={redirect_uri}&"
                                      f"code={code}")
+
         token_json = token_request.json()
         error = token_json.get("error",None)
         #print(token_json)

@@ -36,7 +36,6 @@ class SearchView(View):
     """ SearchView Definition """
 
     def get(self, request):
-
         country = request.GET.get("country")
 
         if country:
@@ -96,7 +95,7 @@ class SearchView(View):
                     filter_args["facilities"] = facility
 
                 qs = models.Room.objects.filter(**filter_args).order_by("-created")
-
+                # 나이 : 13살, 성별 : 남자
                 paginator = Paginator(qs,10,orphans=5)
 
                 page = request.GET.get("page",1)
