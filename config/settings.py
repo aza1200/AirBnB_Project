@@ -154,3 +154,5 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # from django.core.mail import send_mail
 #
 # send_mail('subject', 'body of the message', "sexy-guy@sandboxebe2f1bfe1e749aaa9c8bb88141e642b.mailgun.org", ['jhkim@consalad.net'])
+
+LOGIN_URL = "/users/login/"
