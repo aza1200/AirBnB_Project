@@ -2,7 +2,8 @@ from django.db import models     #장고에 관련한 모든것, 가장 위에�
 from django.urls import reverse # urlname 을 필요로 하는 function 이고 url return 한다.
 from django_countries.fields import CountryField #제3자  Packages
 from core import models as core_models  #자신이 만든 패키지
-from users import models as user_models 
+from users import models as user_models
+from cal import Calendar
 
 class AbstractItem(core_models.TimeStampedModel):
 
@@ -101,6 +102,11 @@ class Room(core_models.TimeStampedModel):
     def get_next_four_photos(self):
         photos = self.photos.all()[1:5]
         return photos
+
+    def get_calendars(self):
+        calendar = Calendar(2019,11)
+        print(calendar.get_month())
+        return False
 
 
 class Photo(core_models.TimeStampedModel):
