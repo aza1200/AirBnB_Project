@@ -104,10 +104,14 @@
                             </div>
                             <div class="grid grid-cols-7 gap-2.5 justify-items-center  mb-4 font-medium">
                                 {% for day in calendar.get_days %}
-                                    {% if day != 0 %}
-                                        <span class="bg-gray-200 w-full text-center rounded text-gray-700 p-1 hover:bg-green-400 hover:text-white cursor-pointer">
+                                    {% if day.number != 0 %}
+                                        {% if day.past %}
+                                            <span class="rounded bg-gray-200 p-1 text-gray-300 w-full text-center">{{day}}</span>
+                                        {% else %}
+                                        <span class="bg-gray-200 w-full text-center rounded text-gray-700 p-1 hover:bg-green-400 hover:font-medium hover:text-white cursor-pointer">
                                             {{day}}
                                         </span>
+                                        {% endif %}
                                     {% else %}
                                         <span></span>
                                     {% endif %}

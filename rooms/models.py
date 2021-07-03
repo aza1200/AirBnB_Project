@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models     #장고에 관련한 모든것, 가장 위에는 파이썬
 from django.urls import reverse # urlname 을 필요로 하는 function 이고 url return 한다.
 from django_countries.fields import CountryField #제3자  Packages
@@ -104,9 +105,16 @@ class Room(core_models.TimeStampedModel):
         return photos
 
     def get_calendars(self):
-        this_month = Calendar(2019,11)
-        next_month = Calendar(2019,12)
-        return (this_month,next_month)
+        now = timezone.now()
+        this_year = now.year
+        this_month = now.month
+
+        next_month = this_month + 1
+        if this_month == 12:
+            next_month = 1
+        this_month_cal = Calendar(this_year,this_month)
+        next_month_cal = Calendar(this_year,next_month)
+        return (this_month_cal,next_month_cal)
 
 
 class Photo(core_models.TimeStampedModel):
