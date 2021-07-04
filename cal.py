@@ -41,7 +41,6 @@ class Calendar(calendar.Calendar):
                 now = timezone.now()
                 today = now.day
                 month = now.month
-                year = now.year
                 past = False
 
                 if month == self.month:
