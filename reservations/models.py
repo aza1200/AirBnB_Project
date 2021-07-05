@@ -1,7 +1,10 @@
 import datetime
 from django.db import models
-from core import models as core_models
 from django.utils import timezone
+from core import models as core_models
+from . import managers
+
+
 # Create your models here.
 
 class BookedDay(core_models.TimeStampedModel):
@@ -38,6 +41,8 @@ class Reservation(core_models.TimeStampedModel):
     guest = models.ForeignKey("users.User",on_delete=models.CASCADE)
     room = models.ForeignKey("rooms.Room",on_delete=models.CASCADE)
 
+    objects = managers.CustomReservationManager()
+
     def __str___(self):
         return f'{self.room} - {self.check_in}'
 
@@ -64,10 +69,8 @@ class Reservation(core_models.TimeStampedModel):
 
             if not existing_booked_day:
                 super().save(*args,**kwargs)
-                #reservation 이 미리 save 되어 있지 않을시
-                #BookedDay 에 reservation 을 foreign key 로 저장할수
                 for i in range(difference.days+1):
                     day = start + datetime.timedelta(days = i)
                     BookedDay.objects.create(day = day,reservation=self )
                 return
-            return super().save(*args,**kwargs)
+        return super().save(*args,**kwargs)

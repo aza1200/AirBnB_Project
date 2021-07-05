@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Reservation {{reservation.check_in}}
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+
+    <div class="container mx-auto my-10 flex flex-col">
+
+        <div class="border-t border-l border-r bg-cover bg-center h-56 rounded-t-lg"
+             style="background-image: url({{reservation.room.first_photo}});"></div>
+
+        <div class="flex flex-col items-start border-l border-r border-t border-b">
+            <div class="font-bold border-b py-8 px-5 w-full">
+                {{reservation.check_in}} - {{reservation.check_out}}
+                <span class="ml-5 {% if   reservation.status == 'pending' %} text-yellow-500
+                             {% elif reservation.status == 'canceled'%} text-red-600
+                             {% else %}text-green-500{% endif %}">
+                    {{reservation.get_status_display}}
+                </span>
+            </div>
+
+            <span class="text-2xl mt-2 pl-5">
+                {{reservation.room.name}}
+            </span>
+
+            <div class="flex my-10 pl-5">
+                <div class="flex flex-col items-center">
+                        {% include "mixins/user_avatar.html" with user=reservation.room.host %}
+                        <span class="mt-2 text-gray-500">{{reservation.room.host.first_name}}</span>
+                </div>
+                <div class="ml-5 flex flex-col">
+                    <span class="font-semibold mb-px">Contact your Airbnb Host</span>
+                    <a href="#" class="font-bold text-green-500">Send a Message</a>
+                </div>
+            </div>
+
+            <div class="pl-5 mb-4">
+                {% if reservation.status == 'pending' %}
+                    <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}"
+                       class="btn-link py-2 px-3 block">Cancel Reservation</a>
+                {% endif %}
+                {% if reservation.room.host == user %}
+                    <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}"
+                       class="btn-link py-2 px-3 block mb-5">Confirm Reservation</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}
