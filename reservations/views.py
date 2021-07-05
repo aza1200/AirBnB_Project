@@ -4,6 +4,7 @@ from django.views.generic import View
 from django.contrib import messages
 from django.shortcuts import render,redirect,reverse
 from rooms import models as room_models
+from reviews import forms as review_forms
 from . import  models
 
 # Create your views here.
@@ -39,7 +40,11 @@ class ReservationDetailView(View):
             and reservation.room.host != self.request.user
         ):
             raise Http404()
-        return render(self.request,"reservations/detail.html",{'reservation':reservation})
+        form = review_forms.CreateReviewForm()
+        return render(
+            self.request,"reservations/detail.html",
+            {'reservation':reservation, 'form':form},
+        )
 
 
 def edit_reservation(request,pk,verb):
@@ -57,8 +62,6 @@ def edit_reservation(request,pk,verb):
         reservation.status = models.Reservation.STATUS_CANCELED
         models.BookedDay.objects.filter(reservation=reservation).delete()
     reservation.save()
-    print(reservation.status)
-    print(models.Reservation.objects.get_or_none(pk=pk).status)
     messages.success(request,"Reservation Updated")
     return redirect(reverse("reservations:detail",kwargs = {'pk': reservation.pk }))
 
