@@ -32,11 +32,11 @@
             </div>
             {% on_favs room as on_favs_boolean %}
             {% if on_favs_boolean %}
-                <a class="block mb-10 w-2/5" href="{% url 'lists:save-room' room.pk %}">
+                <a class="block mb-10 w-2/5 text-green-500 font-semibold" href="{% url 'lists:toggle-room' room.pk %}?action=remove">
                     {% trans  "Remove from Favorites" %}
                 </a>
             {% else %}
-                <a class="block mb-10 w-2/5" href="{% url 'lists:save-room' room.pk %}">
+                <a class="block mb-10 w-2/5 text-green-500 font-semibold" href="{% url 'lists:toggle-room' room.pk %}?action=add">
                     {% trans  "Save to Favorites" %}
                 </a>
             {% endif %}
