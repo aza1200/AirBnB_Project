@@ -8,6 +8,8 @@ from django.utils.html import strip_tags
 from django.shortcuts import reverse
 from django.template.loader import render_to_string
 
+from core import managers as core_managers
+
 # Create your models here.
 
 
@@ -66,6 +68,7 @@ class User(AbstractUser):
     login_method = models.CharField(max_length=50,
                                     choices=LOGIN_CHOICES,
                                     default=LOGIN_EMAIL)
+
 
     #admin 패널에서 url 보고싶으면 get absolute url 하삼
     def get_absolute_url(self):
