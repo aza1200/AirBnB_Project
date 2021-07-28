@@ -29,7 +29,7 @@ DEBUG = bool(os.environ.get("DEBUG"))
 
 
 #ALLOWED_HOSTS = "*"
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','.elasticbeanstalk.com']
 
 # Application definition
 DJANGO_APPS = [
